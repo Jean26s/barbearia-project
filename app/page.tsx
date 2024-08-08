@@ -1,11 +1,13 @@
 "use client";
+import Header from './components/header'
 
-import { useState } from "react";
-import { Button } from "./components/ui/button";
 
 const Home = () =>{ 
  
-  return <Button>Teste</Button>
+  return <div>
+     <Header/>
+     <h2>Olá, Jean</h2>
+  </div>
 };
 
 export default Home;
