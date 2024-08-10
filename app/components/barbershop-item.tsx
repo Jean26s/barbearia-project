@@ -24,7 +24,6 @@ const BarbershopItem = ({barbershop}:BarbershopItemProps) => {
                     <h3 className="truncate font-semibold">{barbershop.name}</h3>
                     <p className="truncate text-sm text-gray-400">{barbershop.address}</p>
                     <Button variant="secondary" className="w-full mt-3">Reservar</Button>
-
                 </div>
             </CardContent>
             </Card>
