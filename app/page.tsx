@@ -9,6 +9,34 @@ import { Avatar, AvatarImage } from './components/ui/avatar';
 import { db } from './lib/prisma';
 import BarbershopItem from './components/barbershop-item';
 
+interface QuickSearchOption{
+  imageUrl:string;
+  title:string;
+}
+
+const QuickSearchOptions:QuickSearchOption[]=[{
+
+  imageUrl:"/cabelo.svg",
+  title:"Cabelo"
+},{
+  imageUrl:"/acabamento.svg",
+  title:"Acabamento"
+},{
+  imageUrl:"/barba.svg",
+  title:"Barba"
+},{
+  imageUrl:"/acabamento.svg",
+  title:"Sobrancelha"
+},{
+  imageUrl:"/barba.svg",
+  title:"Massagem"
+},{
+  imageUrl:"/cabelo.svg",
+  title:"Hidratação"
+}
+
+]
+
 
 const Home = async () =>{ 
   //chamar banco de dados
@@ -38,38 +66,14 @@ const Home = async () =>{
      {/*BUSCA RAPIDA*/}
 
      <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-      <Button className='gap-2' variant="secondary">
-        <Image src="/cabelo.svg" width={16} height={16} alt='Cabelo'></Image>
-        Cabelo
-      </Button>
+      {QuickSearchOptions.map((option)=>(
 
-      <Button className='gap-2' variant="secondary">
-        <Image src="/barba.svg" width={16} height={16} alt='Barba'></Image>
-        Barba
-      </Button>
-
-      <Button className='gap-2' variant="secondary">
-        <Image src="/acabamento.svg" width={16} height={16} alt='Acabamento'></Image>
-        Acabamento
-      </Button>
-
-      <Button className='gap-2' variant="secondary">
-        <Image src="/cabelo.svg" width={16} height={16} alt='Cabelo'></Image>
-        Cabelo
-      </Button>
-
-      <Button className='gap-2' variant="secondary">
-        <Image src="/cabelo.svg" width={16} height={16} alt='Cabelo'></Image>
-        Pézinho
-      </Button>
-
-      <Button className='gap-2' variant="secondary">
-        <Image src="/cabelo.svg" width={16} height={16} alt='Cabelo'></Image>
-        Sobrancelha
-      </Button>
-
+       <Button className='gap-2' variant="secondary">
+       <Image src={option.imageUrl} width={16} height={16} alt={option.title}></Image>
+       {option.title}
+     </Button>
       
-
+      ))}
      </div>
 
      <div className='relative w-full h-[150px] mt-6 >'>
