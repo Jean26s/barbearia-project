@@ -4,38 +4,12 @@ import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
 import Image from 'next/image';
 import { Card, CardContent } from './components/ui/card';
-import { Badge } from './components/ui/badge';
-import { Avatar, AvatarImage } from './components/ui/avatar';
 import { db } from './lib/prisma';
 import BarbershopItem from './components/barbershop-item';
+import { QuickSearchOptions } from './_constants/search';
+import BookingItem from './components/booking-item';
 
-interface QuickSearchOption{
-  imageUrl:string;
-  title:string;
-}
 
-const QuickSearchOptions:QuickSearchOption[]=[{
-
-  imageUrl:"/cabelo.svg",
-  title:"Cabelo"
-},{
-  imageUrl:"/acabamento.svg",
-  title:"Acabamento"
-},{
-  imageUrl:"/barba.svg",
-  title:"Barba"
-},{
-  imageUrl:"/acabamento.svg",
-  title:"Sobrancelha"
-},{
-  imageUrl:"/barba.svg",
-  title:"Massagem"
-},{
-  imageUrl:"/cabelo.svg",
-  title:"Hidratação"
-}
-
-]
 
 
 const Home = async () =>{ 
@@ -80,30 +54,7 @@ const Home = async () =>{
      <Image src="/banner-01.png" fill className="object-cover rounded-xl" alt='Banner'/>
      </div>
 
-     <h2 className='text-xs font-bold uppercase text-gray-400 mt-6 mb-3'>Agendamentos</h2>
-
-     <Card className='mt-6'>
-      <CardContent className='flex justify-between p-0'>
-         {/*ESQUERDA*/}
-        <div className='flex flex-col gap-2 py-5 pl-5'>
-          <Badge className='w-fit'>Confirmado</Badge>
-          <h3 className='font-semibold'>Corte de cabelo</h3>
-          <div className="flex items-center">
-            <Avatar className='h-6 w-6'>
-              <AvatarImage src="https://utfs.io/f/c97a2dc9-cf62-468b-a851-bfd2bdde775f-16p.png"></AvatarImage>
-            </Avatar>
-            <p className='text-sm'>Barbearia James</p>
-          </div>
-        </div>
-          {/*DIREITA*/}
-        <div className='flex flex-col justify-center items-center px-5 border-l-2 border-solid'>
-         <p>Agosto</p>
-         <p>07</p>
-         <p>2024</p>
-        </div>
-
-      </CardContent>
-     </Card>
+    <BookingItem/>
 
         <h2 className='text-xs font-bold uppercase text-gray-400 mt-6 mb-3'>Recomendados</h2>
 
