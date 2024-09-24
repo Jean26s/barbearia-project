@@ -22,8 +22,9 @@ const Home = async () =>{
   })
   
  
-  return ( <div>
-      <Header/>
+  return ( 
+     <div>
+     <Header/>
      <div className="p-5">
      <h2 className="text-xl font-bold">Olá, Jean</h2>
      <p>Quarta-feira,07 de agosto</p>
