@@ -1,3 +1,4 @@
+import ServiceItem from "@/app/components/service-item";
 import { Button } from "@/app/components/ui/button";
 import { db } from "@/app/lib/prisma";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
@@ -16,13 +17,19 @@ const  BarbershopPage = async ({params}:BarbershopPageProps) => {
         where:{
             id:params.id,
     },
+        include:{
+            services:true,
+        }
         
     
     })
-
+    
     if(!barbershop){
         return notFound()
     }
+
+    
+
     return <div>
         
             <div className="relative w-full h-[250px]">
@@ -58,7 +65,13 @@ const  BarbershopPage = async ({params}:BarbershopPageProps) => {
                 <div className="p-5 border-b border-solid space-y-3">
                     <h2 className="text-xs font-bold uppercase text-gray-400">Sobre nós</h2>
                     <p className="text-sm text-justify">{barbershop?.description}</p>
-                  
+                </div>
+
+                <div className="p-5 space-y-3" >
+                <h2 className="text-xs font-bold uppercase text-gray-400">Serviços</h2>
+                <div className="space-y-3">
+                {barbershop.services.map(service=><ServiceItem key={service.id} service={service}/>)}
+                </div>
                 </div>
                 
             </div>
