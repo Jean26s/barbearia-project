@@ -3,7 +3,8 @@ interface QuickSearchOption{
     title:string;
   }
   
-  export const QuickSearchOptions:QuickSearchOption[]=[{
+  export const QuickSearchOptions:QuickSearchOption[]=
+  [{
   
     imageUrl:"/cabelo.svg",
     title:"Cabelo"
