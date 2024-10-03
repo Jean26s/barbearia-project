@@ -1,6 +1,6 @@
 import { CalendarIcon, HomeIcon, LogOutIcon, MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
-import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import {SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import Image from 'next/image';
 import { QuickSearchOptions } from "../_constants/search";
