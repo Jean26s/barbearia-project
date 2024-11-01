@@ -1,10 +1,11 @@
-import { CalendarIcon, HomeIcon, LogOutIcon, MenuIcon } from "lucide-react";
+import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon, MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import {SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import Image from 'next/image';
 import { QuickSearchOptions } from "../_constants/search";
 import Link from "next/link";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 
 const SidebarSheet = () => {
     return (
@@ -14,14 +15,32 @@ const SidebarSheet = () => {
                 <SheetTitle className="text-left">Menu</SheetTitle>
             </SheetHeader>
 
-            <div className="py-5 border-b border-solid flex items-center gap-3">
-                <Avatar>
+            <div className="py-5 border-b border-solid justify-between flex items-center gap-3">
+                <h2 className="font-bold text-lg">Olá , Faça seu login</h2>
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button size="icon">
+                        <LogInIcon></LogInIcon>
+                        </Button>
+                        </DialogTrigger>
+                        <DialogContent className="w-[90%]">
+                            <DialogHeader>
+                                <DialogTitle> Faça seu login </DialogTitle>
+                                <DialogDescription>Conecte-se usando o google</DialogDescription>
+                            </DialogHeader>
+                            <Button variant="outline" className="gap-1 font-bold">
+                                Google
+                            </Button>
+
+                        </DialogContent>
+                </Dialog>
+                {/* <Avatar>
                     <AvatarImage src="https://media.licdn.com/dms/image/v2/D4D03AQGzk24lBRUe_A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721769731231?e=1733356800&v=beta&t=5x1f7bMW2QAv3xNdZHmpCIsSna3ZdXVwjMq8qigfREM" />
                 </Avatar>
                 <div>
                     <p className="font-bold">Jean Azevedo</p>
                     <p className="text-sm">jean.azevedo1@gmail.com</p>
-                </div>
+                </div> */} 
             </div>
 
             <div className="flex flex-col py-5 gap-1 border-b border-solid">
