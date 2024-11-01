@@ -1,3 +1,4 @@
+"use client"
 import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon, MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import {SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
@@ -6,8 +7,13 @@ import Image from 'next/image';
 import { QuickSearchOptions } from "../_constants/search";
 import Link from "next/link";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { signIn } from "next-auth/react";
 
 const SidebarSheet = () => {
+
+    const handleLoginWithGoogleClick=()=> signIn("google")
+        
+    
     return (
 
         <SheetContent>
@@ -28,10 +34,10 @@ const SidebarSheet = () => {
                                 <DialogTitle> Faça seu login </DialogTitle>
                                 <DialogDescription>Conecte-se usando o google</DialogDescription>
                             </DialogHeader>
-                            <Button variant="outline" className="gap-1 font-bold">
+                            <Button onClick={handleLoginWithGoogleClick} variant="outline" className="gap-1 font-bold">
                                 Google
                             </Button>
-
+ 
                         </DialogContent>
                 </Dialog>
                 {/* <Avatar>
