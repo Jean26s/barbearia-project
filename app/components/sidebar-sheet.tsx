@@ -7,11 +7,13 @@ import Image from 'next/image';
 import { QuickSearchOptions } from "../_constants/search";
 import Link from "next/link";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const SidebarSheet = () => {
 
     const handleLoginWithGoogleClick=()=> signIn("google")
+    const {data}= useSession()
+    const handleLogout =() => signOut()
         
     
     return (
@@ -22,6 +24,20 @@ const SidebarSheet = () => {
             </SheetHeader>
 
             <div className="py-5 border-b border-solid justify-between flex items-center gap-3">
+             
+               {data?.user ?(
+                <>
+                <div className="flex items-center gap-2">
+                  <Avatar>
+                  <AvatarImage src={data?.user?.image ?? ""}/>
+              </Avatar>
+              <div>
+                  <p className="font-bold">{data.user.name}</p>
+                  <p className="text-sm">{data.user.email}</p>
+              </div> 
+              </div>
+              </>
+               ):<>
                 <h2 className="font-bold text-lg">Olá , Faça seu login</h2>
                 <Dialog>
                     <DialogTrigger asChild>
@@ -39,14 +55,7 @@ const SidebarSheet = () => {
                             </Button>
  
                         </DialogContent>
-                </Dialog>
-                {/* <Avatar>
-                    <AvatarImage src="https://media.licdn.com/dms/image/v2/D4D03AQGzk24lBRUe_A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721769731231?e=1733356800&v=beta&t=5x1f7bMW2QAv3xNdZHmpCIsSna3ZdXVwjMq8qigfREM" />
-                </Avatar>
-                <div>
-                    <p className="font-bold">Jean Azevedo</p>
-                    <p className="text-sm">jean.azevedo1@gmail.com</p>
-                </div> */} 
+                </Dialog></>}
             </div>
 
             <div className="flex flex-col py-5 gap-1 border-b border-solid">
@@ -63,7 +72,7 @@ const SidebarSheet = () => {
                 ))}
             </div>
             <div className="flex flex-col py-5 gap-1">
-                <Button variant="ghost" className="justify-start gap-2"><LogOutIcon size={18} />Sair da conta</Button>
+                <Button onClick={handleLogout} variant="ghost" className="justify-start gap-2" ><LogOutIcon size={18} />Sair da conta</Button>
             </div>
 
         </SheetContent>
