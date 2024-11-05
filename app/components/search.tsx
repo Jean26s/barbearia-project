@@ -12,7 +12,7 @@ const Search = () => {
     const [search,setSearch] = useState("")
     const handleSubmit = (e:any)=>{
         e.preventDefault()
-        router.push(`/barbershops?search=${search}`)
+        router.push(`/barbershops?title=${search}`)
         
     }
     return ( 

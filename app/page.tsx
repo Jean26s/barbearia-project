@@ -9,6 +9,9 @@ import BarbershopItem from './components/barbershop-item';
 import { QuickSearchOptions } from './_constants/search';
 import BookingItem from './components/booking-item';
 import Search from './components/search';
+import Link from 'next/link';
+import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./components/ui/sheet"
+import { DialogClose } from './components/ui/dialog';
 
 
 
@@ -39,10 +42,12 @@ const Home = async () => {
         <div className="flex gap-3 mt-6 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
           {QuickSearchOptions.map((option) => (
 
-            <Button className='gap-2' variant="secondary">
-              <Image src={option.imageUrl} width={16} height={16} alt={option.title}></Image>
-              {option.title}
+          
+              <Button className='gap-2' variant="secondary" asChild>
+              <Link href={`/barbershops?service=${option.title}`}><Image src={option.imageUrl} width={16} height={16} alt={option.title}/>{option.title}</Link>
+              
             </Button>
+          
 
           ))}
         </div>
